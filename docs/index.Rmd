@@ -1,0 +1,12 @@
+---
+title: "Ragib's Project Homepage"
+author: "Ragib Ahsan"
+date: "11/27/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Welcome to Ragib's project page!

@@ -1,0 +1,31 @@
+---
+title: "week3_dataexploration2"
+author: "Ragib Ahsan"
+date: "9/16/2021"
+output: html_document
+---
+
+**Install the palmerpenguins package and dataset**
+
+install.packages("palmerpenguins")
+
+**Install the here package**
+
+install.packages("here")
+
+**Telling R that you want to use the using the require() or library() function. I prefer require():**
+
+require(palmerpenguins)
+
+require(here)
+
+**Prepare the dataset** 
+
+penguins = data.frame(penguins)
+
+**Data exploration: Numerical Exploration- Mean**
+
+**Try to calculate the mean bill length of all the penguins:**
+
+mean(penguins$body_mass_g)
+

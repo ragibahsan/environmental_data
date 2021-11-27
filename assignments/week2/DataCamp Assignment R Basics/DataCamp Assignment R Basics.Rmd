@@ -1,0 +1,142 @@
+---
+title: "DataCamp Assignment R Basics"
+author: "Ragib Ahsan"
+output: html_document
+---
+
+
+
+**Q1**
+
+    (1pt): What type of data is contained in the variable a
+    
+**Answer**
+
+    Character
+
+**Q2**
+
+    (1pt): What type of data is contained in the variable b1
+    
+**Answer**
+
+    Numeric
+
+**Q3**
+
+    (1pt): What type of data is contained in the variable b2
+
+**Answer**
+
+    Character
+
+**Q4**
+
+    (2pt): What happens when you add b1 and b2 and why?
+
+**Answer**
+
+   It showed in my RStudio console panel an error said- "unexpected symbol". My understanding on that error that, it might be the reson of mixing (adding) numeric and text together and because of mixing string with the numerics, R could not recognize the command and got confuse!
+
+**Q5**
+
+    (1pt): Are the variables b1 and c1 of the same type?
+
+**Answer**
+
+No
+
+**Q6**
+
+    (3pt): Explain what happens when you add b1 and c1. Consider both the number of elements in each variable and the data types.
+    
+**Answer**
+
+    It showed an error said, "non-numeric argument to binary operator"! The data types were not same (one is numeric while the other is list of numbers) therefore it did not support while tried to add them together (mismatch in data types). 
+
+**Q7**
+
+    (1pt): Show the R code you used to create v1.
+    
+**Answer**
+    
+    v1= c(-2, -1, 0, 1, 2)
+    
+**Q8**
+
+    (1pt): Show the R code you used to create v2.
+    
+**Answer**
+
+    v2= c(-6, -3, 0, 3, 6)
+    
+**Q9**
+
+    (1pt): Show the R code you used to calculate the sum of elements in v2.
+    
+**Answer**
+
+    sum(v2)
+
+**Q10**
+
+    (1 pt) Show the code you used to create mat_1
+    
+**Answer**
+
+    vec_4 = c(1:12)
+    mat_1 = matrix(1:12, nrow = 4, ncol = 3)
+    
+**Q11**
+
+    (1 pt) Show the code you used to create mat_2
+    
+**Answer**
+
+    vec_4 = c(1:12)
+    mat_2 = matrix(1:12, nrow = 3, ncol = 4)
+    
+**Q12**
+
+    Q1 (2 pts): Show the R code you used to create my_list_1.
+    
+**Answer**
+
+    my_list_1 = c(5.2, "five point two", (0:5))
+    
+**Q13**
+
+    (1pt): Show the R code that would select third element of the list.
+    
+**Answer**
+
+    my_list_1[[3]]
+    
+**Q14**
+
+    Q2 (1pt): Show the R code that selects the list element with the name “one”. Note: there are at least two ways to do this!
+    
+**Answer**
+
+  my_list_1 = c("two", "one", "three")
+  my_list_1 [2]
+  
+**Q15**
+    
+    (3 pts.) Show the R code that you used to create my_bool_vec.
+
+**Answer**
+
+    my_bool_vec = c(my_vec)
+    
+**Q16**
+    
+    (2 pts.) Show the R code that you used to subset my_vec using my_boolean_vec.
+
+**Answer**
+
+    I have tried to write the code but failed!
+
+
+---
+

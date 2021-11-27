@@ -1,0 +1,33 @@
+---
+title: "R Markdown Documents Part-1"
+author: "Ragib Ahsan"
+subtitle: "Analysis of Environmental Data"
+output:
+  html_document:
+    toc: TRUE
+    toc_float: TRUE
+---
+
+# **Introduction:**
+
+I am **Ragib Ahsan**, a graduate student at UMass Amherst, majoring in *Organismic and Evolutionary Biology*
+
+# **Concept List:**
+
+The followings are the concepts, which I am aiming to learn in this course- 
+
+1. Basics of R and RStudio (software setup, creating projects, directory, execution etc.)
+
+2. Analysis of differnt types of data sets and interpret them
+
+3. Bring home all the related skills and be a basic R and RStudio user
+
+# **Course List:**
+
+Below courses are my favorit courses those I have taken so far. 
+
+* Evolution Core Course in *OEB* Program
+* Microbial Diversity
+* Genome Instability 
+* Immunology and Disease 
+* Pharmacology

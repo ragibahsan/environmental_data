@@ -1,0 +1,354 @@
+---
+title: "final_R_reference"
+author: "Ragib Ahsan"
+date: "12/16/2021"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# R Reference Guide {.tabset .tabset-pills}
+
+
+## Loading Data and Packages
+
+* Use these to show how to load the here and palmerpenguins packages - libary() and require()
+
+* Ginkgo data: use the 2021 ginkgo data to create a data.frame called ginkgo using:
+
+### Require() function
+
+This function used for loading the packages, which is already ready to use in R.
+
+```{r}
+require(here)
+```
+
+### Library() function
+
+This function is about the all stored and downloaded packages in R
+```{r}
+library(palmerpenguins)
+```
+
+### Read.csv() function
+
+this function allows csv files to open and rean in R. 
+
+```{r}
+ginkgo = data.frame(read.csv(here("data", "ginkgo_data_2021.csv")))
+```
+
+
+
+## 
+## Data Structures
+
+### c() function
+The function c() combines or concatenates its arguments into a vector (a 1-dimensional data structure consisting of 1 or more elements).
+
+* All of the elements must be of the same type.
+    * I can’t combine character and numeric types in the same call to c()
+
+Here’s two examples using numeric and character data types:
+
+```{r}
+## Create a vector of numbers:
+num_vec  = c(1, 4, 8, 9, 13)
+
+## Create a vector of characters:
+char_vec = c("a", "fish", "data is cool")
+```
+
+I can show the contents of a vector by typing the name of the vector, or using the print() function.
+
+```{r}
+## Typing the name of the vector into the console prints the contents
+num_vec
+
+## The print() function accomplishes the same task:
+print(char_vec)
+```
+
+### print() function
+This function print the contents of the vectors
+
+```{r}
+print(char_vec)
+```
+
+### length() function
+
+This functions deals with the length of the vectors
+
+```{r}
+length(num_vec)
+```
+```{r}
+length(char_vec)
+```
+
+### matrix() function
+This function create a matrix from a given set of values to a no of rows and column. 
+
+```{r}
+matrix(num_vec, nrow = 3, ncol = 5, byrow = TRUE)
+```
+
+### data.frame() function
+DataFrame is a data structure, organizes data into a table with rows and column. 
+  * We can say ginkgo is a data frame and we can vizualize the ginkgo data as a table in R
+
+```{r}
+ginkgo
+```
+### Several useful functions to vizualize the specific data information from the DataFrame:
+
+### nrow() function
+
+```{r}
+## Helps to vidualize the rows prsent in a data frame
+nrow(ginkgo)
+```
+
+### ncol() function
+
+```{r}
+## Helps to vidualize the columns prsent in a data frame
+ncol(ginkgo)
+```
+
+### dim() function
+
+```{r}
+## Helps to vidualize the rows and columns prsent in a data frame
+dim(ginkgo)
+```
+
+## Subsetting
+
+Useful function in R, which allow to filter only the specific part from the data set or data
+
+### $
+
+Selecting or mentioning (subsetting) a data set by the name
+
+```{r}
+head(ginkgo$petiole_length)
+```
+
+### [[]]
+
+Selects data sets py position
+
+```{r}
+## Select the first row.
+head(ginkgo[1,])
+```
+```{r}
+## Select the third column.
+head(ginkgo[,3])
+```
+
+### subset() function
+
+subset use to select a certain subset from vectors, matrices or data frames
+
+```{r}
+## Recover all Adelie penguins data from the "palmerpenguins" dataset.
+head(subset(penguins, species == "Adelie"))
+```
+
+## Numerical Data Exploration
+
+### summary() function
+
+This function provides the model summary
+
+```{r}
+summary(penguins)
+```
+
+### mean () function
+
+This function provides the average (mean) of a data set
+
+```{r}
+# For observing the mean bill length
+mean(penguins$bill_length_mm, na.rm = TRUE) 
+```
+
+### sd() function
+
+This function produces the standard daviation from a dataset. For example we can calculate the standard deviation of bill length
+
+```{r}
+sd(penguins$bill_length_mm, na.rm = TRUE)
+```
+
+## Graphical Data Exploration
+
+### Scatterplot()
+
+  * Scatterplot can be generated usung the plott() function. Plot requires arguments as following: 
+  
+col: Deals with the colors. Useful functions for using the colors are- rgb() and colors() functions (color names and IDs)
+
+pch: Assigns the types of points (circle, triangle, star etc.) within the plot
+
+cex: Specifies the size of the points in the scatterplot
+
+main: Title of the plot
+
+xlab: Title of x-axis 
+
+ylab: Title of y-axis
+
+xlim: Controls the minimum and maximum values in the x-axis
+
+ylim: Controls the minimum and maximum values in the y-axis
+
+```{r}
+plot(max_width ~ max_depth, data = ginkgo, main = "Maximum Depth and Width of Ginkgo Leaf", 
+     xlab = "Maximum depth of leaf", ylab = "Maximum  width of leaf", 
+     pch = 1, cex = 1,
+     col = "blue4",
+     xlim = c(20,150),
+     ylim = c(20,150)
+)
+```
+
+### hist() function
+Creates histogram. 
+
+```{r}
+hist(penguins$flipper_length_mm, 
+     breaks = 9, 
+     main = "Penguin Flipper Length Histogram",
+     xlab = "Flipper Length (mm)",
+     col = "deepskyblue1")
+```
+
+### boxplot() function
+1. a simple boxplot of ginkgo petiole lengths
+```{r}
+boxplot(
+  ginkgo$petiole_length, 
+  main = "Petiole Length of Ginkgo",
+  ylab = "Petiole Length (mm)",
+  col = "darkturquoise"
+)
+```
+
+2. conditional boxplot of one of the continuous variables conditioned on the seeds_present column
+
+```{r}
+boxplot(
+  data = ginkgo, max_width ~ seeds_present, 
+  main = "Width of Ginkgo Leaf by Presense of Seeds",
+  xlab = "Seeds Present", 
+  ylab = "Maximum Width of Ginkgo (mm)", 
+  names = c("Absent", "Present"),
+  col = c("darksalmon", "darkseagreen2")
+)
+```
+
+### 4-panel figure of histograms
+
+```{r}
+par(mfrow = c(2,2))
+
+hist(ginkgo$max_width, 
+     main = "Histogram of Ginkgo Leaf Width", 
+     xlab = "Maximum Leaf Width (mm)", 
+     col = "darkred")
+
+hist(ginkgo$notch_depth, 
+     main = "Histogram of Ginkgo Notch Depth", 
+     xlab = "Notch Depth (mm)",
+     col = "darkorchid1")
+
+hist(ginkgo$petiole_length, 
+     main = "Histogram of Ginkgo Petiole Length", 
+     xlab = "Petiole Length(mm)",
+     col = "brown1")
+
+hist(ginkgo$max_depth, 
+     main = "Histogram of Ginkgo Leaf Depth", 
+     xlab = "Maximum Leaf Depth (mm)", 
+     col = "darkgreen")
+```
+
+## Distribution Functions
+
+  * Distribution functions are important to get idea about the probability of the specific values or the set of values. Distribution function is two types- 
+    ** Normal Distribution
+    ** Binomial Distribution
+
+### Normal Distribution 
+
+Known as the continuous probability distribution where values are placed in a symmetrical style and situated around the mean.
+
+### dnorm() function
+
+It's a probability density function of normal distribution
+
+```{r}
+dnorm(5, mean = 2, sd = 1)
+## Probability of observing a value of 5, with a mean value 2 and a SD value 1.
+```
+
+### pnorm() function
+
+Its a commulative distribution function of the normal distribution
+
+```{r}
+pnorm(q = 4, mean = 6, sd = 3)
+## Probability of observing a value of 4 with a mean value 6 and a SD value 3.
+```
+
+### qnorm() function
+
+Its a quantile function of normal distribution
+
+```{r}
+qnorm(p = 0.25, mean = 1, sd = 1)
+## Probability one fourth (25%) with a mean and SD value 1.
+```
+
+### Binomial Distribution 
+
+Known as the discrete probability distribution with two outcomes (number of successes or failure)
+
+### dbinom() function
+Its the probability density function for the binomial distribution
+
+```{r}
+dbinom(x = 5, size = 100, prob = 0.5)
+## Probability of observing a value of 5 with a trial size of 100, and prob = 0.5
+```
+
+### pbinom() function
+
+Cummulative distribution function for the binomial distribution
+
+```{r}
+pbinom(q = 4, size = 100, prob = 0.5)
+## Probability of observing a value of less than 5 with a trial size of 100 and prob of 0.5
+```
+
+### qbinom() function
+
+Quantile function for the binomial distribution
+
+```{r}
+qbinom(p = 0.5, size = 100, prob = 0.5)
+## Probability of one fourth (25%) with a trial size of 100, and a prob. = 0.5
+```
+
+
+
